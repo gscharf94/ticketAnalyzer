@@ -4,6 +4,7 @@ import openpyxl
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment, Color, colors, PatternFill, Font, Alignment
 from openpyxl.styles.borders import Border, Side
+from frontPage import createFrontPage
 
 def returnCoordString(col,row):
 	dicty = {1:'A',2:'B',3:'C',4:'D',5:'E',6:'F',7:'G',8:'H'}
@@ -71,6 +72,11 @@ def createSpreadsheet(workOrders,saveName,titleDict):
 
 	firstPage2 = wb2['Sheet']
 	wb2.remove(firstPage2)
+
+	createFrontPage(workOrders1,wb,titleDict)
+	createFrontPage(workOrders2,wb2,titleDict)
+
+
 
 	wb.save(saveName)
 	saveName2 = saveName[:-5]+" TMS.xlsx"
